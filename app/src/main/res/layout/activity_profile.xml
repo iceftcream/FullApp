@@ -51,6 +51,45 @@
                                 android:paddingLeft="10dp"
                                 android:paddingRight="10dp">
 
+                                <Button
+                                    android:id="@+id/saveinfo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/smoke_pink"
+                                    android:text="Save changes"
+                                    android:textColor="@color/white" />
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:padding="10dp"
+                                    android:visibility="visible"
+                                    app:cardCornerRadius="5dp"
+                                    app:cardElevation="4dp"
+                                    app:cardUseCompatPadding="true">
+
+                                    <TextView
+                                        android:id="@+id/yourname"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:padding="10dp"
+                                        android:layout_marginLeft="8dp"
+                                        android:text="Your Display Name"
+                                        android:textColor="@color/red"
+                                        android:textSize="18dp"
+                                        android:textStyle="bold" />
+
+
+                                    <EditText
+                                        android:id="@+id/displayName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="70dp"
+                                        android:background="@android:color/transparent"
+                                        android:layout_marginLeft="15dp"
+                                        android:gravity="bottom"
+                                        android:hint="Thitipoom Techaapaikhun" />
+                                </androidx.cardview.widget.CardView>
+
 
                                 <androidx.cardview.widget.CardView
                                     android:layout_width="match_parent"
@@ -245,7 +284,6 @@
                                 </LinearLayout>
 
                                 </androidx.cardview.widget.CardView>
-
 
 
 

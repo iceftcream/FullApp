@@ -19,7 +19,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.dating.Profile.Profile_Activity;
+import com.example.dating.Profile.UserInfo;
 import com.example.dating.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.example.dating.Utils.PulsatorLayout;
@@ -40,6 +49,9 @@ public class MainActivity extends Activity {
     private PhotoAdapter arrayAdapter;
     private ArrayList<Cards> naksusun;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference colRef = db.collection("users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +68,32 @@ public class MainActivity extends Activity {
 
         setupTopNavigationView();
 
-        //need to get these info from database & sync
-        //Basically, each user saves their info to a user branch (from login & profile)
-        //Collect each user data and display them here (Name, Age, Image, About, Interests, Distance, Sexuality, Relationship Status, Seeking for)
         rowItems = new ArrayList<Cards>();
-        Cards cards = new Cards("Alice", 21, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Hello there", "Acting", 200,0);
-        similarinterest(cards);
-        rowItems.add(cards);
+
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                UserInfo user = document.toObject(UserInfo.class);
+                                Cards cards = new Cards(user.getName(), 21,
+                                        "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg",
+                                        user.getBio(), user.getInterests().get(0), 200,
+                                        0);
+                                similarinterest(cards);
+                                rowItems.add(cards);
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+
+        /*
         cards = new Cards("Anne", 20, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Hii", "Dancing", 800,0);
         similarinterest(cards);
         rowItems.add(cards);
@@ -80,7 +111,7 @@ public class MainActivity extends Activity {
         rowItems.add(cards);
         cards = new Cards( "Minah", 19, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Just trying", "Art", 5000,0);
         similarinterest(cards);
-        rowItems.add(cards);
+        rowItems.add(cards);*/
 
         Collections.sort(rowItems, Cards.dahsusun);
 

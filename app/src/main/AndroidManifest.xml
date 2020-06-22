@@ -25,8 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.dating.Main.MainActivity">
-
+        <activity android:name=".Main.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,10 +33,11 @@
             </intent-filter>
         </activity>
 
-     <activity android:name="com.example.dating.Profile.Profile_Activity"/>
-        <activity android:name="com.example.dating.Main.DisplayProfile" />
-        <activity android:name="com.example.dating.Main.BtnLikeActivity" />
-        <activity android:name="com.example.dating.Main.BtnDislikeActivity"></activity>
+        <activity android:name=".Main.MainActivity"/>
+        <activity android:name=".Profile.Profile_Activity" />
+        <activity android:name=".Main.DisplayProfile" />
+        <activity android:name=".Main.BtnLikeActivity" />
+        <activity android:name=".Main.BtnDislikeActivity" />
     </application>
 
 </manifest>
