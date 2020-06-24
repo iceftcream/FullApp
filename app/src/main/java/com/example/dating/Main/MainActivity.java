@@ -79,12 +79,15 @@ public class MainActivity extends Activity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 UserInfo user = document.toObject(UserInfo.class);
-                                Cards cards = new Cards(user.getName(), 21,
-                                        "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg",
-                                        user.getBio(), user.getInterests().get(0), 200,
-                                        0);
-                                similarinterest(cards);
-                                rowItems.add(cards);
+                                Cards cards;
+                                    cards = new Cards(user.getName(), 21,
+                                            "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg",
+                                            user.getBio(), user.getInterests().get(0), 200,
+                                            0);
+
+                                    similarinterest(cards);
+                                    rowItems.add(cards);
+
                             }
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
@@ -92,26 +95,24 @@ public class MainActivity extends Activity {
                     }
                 });
 
-
-        /*
-        cards = new Cards("Anne", 20, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Hii", "Dancing", 800,0);
+        Cards cards = new Cards("Anne", 20, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Hii", "Dancing", 800,0);
         similarinterest(cards);
         rowItems.add(cards);
-        cards = new Cards( "Mira", 22, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Testing", "Singing", 400,0);
+        cards = new Cards( "Mira", 22, "https://images.freeimages.com/images/large-previews/e7f/girl-1431941.jpg", "Testing", "Singing", 400,0);
         similarinterest(cards);
         rowItems.add(cards);
-        cards = new Cards( "Arisa", 19, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Whats up", "Swimming", 1308,0);
+        cards = new Cards( "Arisa", 19, "https://images.freeimages.com/images/large-previews/3da/girl-1311916.jpg", "Whats up", "Swimming", 1308,0);
         similarinterest(cards);
         rowItems.add(cards);
-        cards = new Cards( "Alya", 20, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Yo", "Drawing", 1200,0);
+        cards = new Cards( "Alya", 20, "https://images.freeimages.com/images/large-previews/30f/girl-1438459.jpg", "Yo", "Drawing", 1200,0);
         similarinterest(cards);
         rowItems.add(cards);
-        cards = new Cards( "Nina", 21, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Hi", "Sleeping", 1200,0);
+        cards = new Cards( "Nina", 21, "https://images.freeimages.com/images/large-previews/7b6/girl-1438440.jpg", "Hi", "Sleeping", 1200,0);
         similarinterest(cards);
         rowItems.add(cards);
-        cards = new Cards( "Minah", 19, "https://images.freeimages.com/images/large-previews/b40/girl-on-phone-1401433.jpg", "Just trying", "Art", 5000,0);
+        cards = new Cards( "Minah", 19, "https://images.freeimages.com/images/large-previews/167/girl-in-the-garden-1431630.jpg", "Just trying", "Art", 5000,0);
         similarinterest(cards);
-        rowItems.add(cards);*/
+        rowItems.add(cards);
 
         Collections.sort(rowItems, Cards.dahsusun);
 

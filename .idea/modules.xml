@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppInterface2.iml" filepath="$PROJECT_DIR$/.idea/modules/AppInterface2.iml" group="AppInterface2" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="AppInterface2/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AppInterfaceWFirebase.iml" filepath="$PROJECT_DIR$/.idea/modules/AppInterfaceWFirebase.iml" group="AppInterfaceWFirebase" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="AppInterfaceWFirebase/app" />
     </modules>
   </component>
 </project>
